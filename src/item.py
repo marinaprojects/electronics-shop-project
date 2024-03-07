@@ -22,6 +22,13 @@ class Item:
         self.quantity = quantity
         self.all.append(self)
 
+    def __add__(self, other):
+        """Addition operation to combine quantities of two items"""
+        if isinstance(other, Item):
+            return self.quantity + other.quantity
+        else:
+            raise TypeError("Unsupported operand type(s) for +: 'Item' and '{}'".format(type(other).__name__))
+
     def __repr__(self):
         return f"Item('{self.name}', {self.price}, {self.quantity})"
 
